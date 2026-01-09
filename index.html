@@ -522,7 +522,7 @@
 
         const ADMIN_PASSWORD = 'zammy';
         let lessons = [];
-        let subjects = ['matematica', 'fisica', 'scienze','inglese','filosofia', 'chimica', 'storia','altro'];
+        let subjects = ['matematica', 'fisica', 'scienze', 'chimica', 'storia','inglese','filosofia','altro'];
         let isEditMode = false;
         let editingLessonKey = null;
         let currentFilter = 'all';
@@ -534,9 +534,11 @@
             'fisica': '#f093fb',
             'scienze': '#4facfe',
             'chimica': '#43e97b',
-            'storia': '#fa709a'
-        };
-
+            'storia': '#fa709a',
+            'inglese':'#fa709a',
+            'filosofia':'fa709a',
+            'altro':'#fa709a'
+         };
         // Carica le materie personalizzate da Firebase
         async function loadSubjects() {
             try {
@@ -597,7 +599,7 @@
                 ${subjects.map(subject => `
                     <button class="filter-btn ${currentFilter === subject ? 'active' : ''}" onclick="filterBySubject('${subject}')">
                         ${capitalizeFirst(subject)}
-                        ${isEditMode && !['matematica', 'fisica', 'scienze', 'chimica', 'storia'].includes(subject) ? 
+                        ${isEditMode && !['matematica', 'fisica', 'scienze', 'chimica', 'storia','inglese','filosofia','altro'].includes(subject) ? 
                             `<span class="remove-subject-btn" onclick="removeSubject('${subject}', event)">✕</span>` : ''}
                     </button>
                 `).join('')}
